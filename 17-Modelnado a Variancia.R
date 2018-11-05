@@ -15,15 +15,15 @@ library(tseries)
 library("urca") 
 library(forecast)
 
-BITCOIN <- na.omit(read_excel("C:/Econometria/Bitcoin2.xls"))
+BITCOIN <- na.omit(read_excel("C:/Econometria/Bitcoin.xlsx"))
 
-Bitcoin <-  ts(log(BITCOIN$Fechar), start = 2018, frequency = 365)
+Bitcoin <-  ts(log(Bitcoin2_1_$Fechar), start = 2018, frequency = 365)
 
 
 #Se não for estacionária, diferenciar a série
 
-IntOrdem1 <- diff(log(BITCOIN$Fechar))
-IntegradaOrdem1 <- ts(IntOrdem1, start = 2018, frequency = 365)
+IntOrdem1 <- diff(log(Bitcoin2_1_$Fechar))
+IntegradaOrdem1 <- ts(IntOrdem1, start = 2014, frequency = 365)
 
 plot(IntegradaOrdem1, type="l", main="Primeira Diferança dos Logs do Bitcoin - LogReturn", ylab="Log Preço", xlab="Data", col="Blue")
 grid(col = "black", lty = "dotted")
@@ -63,7 +63,8 @@ colnames(Resultados) <- c("Modelo","AIC","BIC")
 
 #Efetuar teste ARCH-LM para o melhor modelo
 
-arch.test(AR1)
+
+
 
 #Modelando a Variância
 
